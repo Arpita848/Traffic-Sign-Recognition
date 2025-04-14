@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Traffic Sign Recognition Using Deep Learning</h2>
+
+<img src="https://i.postimg.cc/rFYVTRnN/yellow-traffic-sign-set-isolated-white-background-97458-258.jpg"
+alt="" style="width: 30%; height:30%">
+
+<div>
+  <form id="upload-file" action="/predict" method="post" enctype="multipart/form-data">
+    <label for="imageUpload" class="upload-label">Choose an image...</label>
+    <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg" required>
+    <br><br>
+    <button type="submit" class="btn btn-success btn-lg" id="btn-predict">Predict</button>
+  </form>
+
+  {% if prediction %}
+  <h3 id="result" style="margin-top: 20px;">
+    <span>{{ prediction }}</span>
+  </h3>
+  {% endif %}
+</div>
+
+<style>
+  .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-success {
+    background-color: #28a745;
+    color: white;
+  }
+
+  .btn-success:hover {
+    background-color: #218838;
+  }
+
+  input[type="file"] {
+    margin: 10px;
+  }
+</style>
+{% endblock %}
